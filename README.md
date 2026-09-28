@@ -1,56 +1,33 @@
-# Welcome to your Expo app 👋
+# IT313 - Components and JSX
 
-This is an [Expo](https://expo.dev) project created with [`create-expo-app`](https://www.npmjs.com/package/create-expo-app).
+## Student Roster Card Renderer
 
-## Get started
+This project is a React Native Expo application that displays a list of students using reusable components.
 
-1. Install dependencies
+## Problem
 
-   ```bash
-   npm install
-   ```
+The application displays each student using a student card. Each card shows the student's name, course, and units enrolled. A "Full Load" label appears only when the student's `isFullLoad` value is true.
 
-2. Start the app
+The application also displays the total number of students dynamically.
 
-   ```bash
-   npx expo start
-   ```
+## Component Structure
 
-In the output, you'll find options to open the app in a
+### StudentCard
 
-- [development build](https://docs.expo.dev/develop/development-builds/introduction/)
-- [Android emulator](https://docs.expo.dev/workflow/android-studio-emulator/)
-- [iOS simulator](https://docs.expo.dev/workflow/ios-simulator/)
-- [Expo Go](https://expo.dev/go), a limited sandbox for trying out app development with Expo
+`StudentCard` is a functional component that receives:
 
-You can start developing by editing the files inside the **app** directory. This project uses [file-based routing](https://docs.expo.dev/router/introduction).
+- name
+- course
+- units
+- isFullLoad
 
-## Get a fresh project
+It uses props destructuring and JSX to display the student's information. Conditional rendering with `&&` is used for the "Full Load" label.
 
-When you're ready, run:
+### StudentRoster
 
-```bash
-npm run reset-project
-```
+`StudentRoster` is the parent component that contains the students array.
 
-This command will move the starter code to the **app-example** directory and create a blank **app** directory where you can start developing.
+It uses `.map()` to render one `StudentCard` for each student. Each card uses the student's unique ID as its key.
 
-### Other setup steps
-
-- To set up ESLint for linting, run `npx expo lint`, or follow our guide on ["Using ESLint and Prettier"](https://docs.expo.dev/guides/using-eslint/)
-- If you'd like to set up unit testing, follow our guide on ["Unit Testing with Jest"](https://docs.expo.dev/develop/unit-testing/)
-- Learn more about the TypeScript setup in this template in our guide on ["Using TypeScript"](https://docs.expo.dev/guides/typescript/)
-
-## Learn more
-
-To learn more about developing your project with Expo, look at the following resources:
-
-- [Expo documentation](https://docs.expo.dev/): Learn fundamentals, or go into advanced topics with our [guides](https://docs.expo.dev/guides).
-- [Learn Expo tutorial](https://docs.expo.dev/tutorial/introduction/): Follow a step-by-step tutorial where you'll create a project that runs on Android, iOS, and the web.
-
-## Join the community
-
-Join our community of developers creating universal apps.
-
-- [Expo on GitHub](https://github.com/expo/expo): View our open source platform and contribute.
-- [Discord community](https://chat.expo.dev): Chat with Expo users and ask questions.
+```jsx
+key={student.id}
